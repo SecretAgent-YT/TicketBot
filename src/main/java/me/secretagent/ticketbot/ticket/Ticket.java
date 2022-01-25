@@ -65,6 +65,7 @@ public class Ticket implements EventListener {
                 .queue( textChannel -> this.channel = textChannel);
         ticketBot.getJDA().addEventListener(this);
         tickets.add(this);
+        channel.sendMessage("Why did you create this ticket " + member.getAsMention()).queue();
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -107,7 +108,6 @@ public class Ticket implements EventListener {
     public static List<Ticket> getTickets() {
         return tickets;
     }
-
 
     @Override
     public void onEvent(@NotNull GenericEvent event) {
